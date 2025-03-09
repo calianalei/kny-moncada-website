@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import "../css/auth.css";
 import authPhoto from "../../media/auth-photo.png";
+import * as Chakra from "@chakra-ui/react";
 import user from "../../media/user.png";
 import { Fieldset } from "@chakra-ui/react";
 import { Field } from "@/components/ui/field"; 
-import { Button, Input, RadioGroup, Radio } from '@chakra-ui/react';
+import { Button, Input } from '@chakra-ui/react';
+//import { Radio, RadioGroup } from '@chakra-ui/react';
+
+const { Radio, RadioGroup, HStack} = Chakra;
+
 
 function Login() {
   const [isInvalid, setIsInvalid] = useState(false); // State to track validity
@@ -61,30 +66,38 @@ function Login() {
 }
 
 function SignUp() {
+  const [email, setEmail] = useState('');
+
+  const handleNext = (e) => {
+    e.preventDefault();
+    // Handle signup logic (e.g., sending data to backend)
+    alert('Signed up successfully');
+  };
+
   return (
     <div className="signup-container">
       <div className="inside-container">
         <img src={authPhoto} alt="Authentication" />
         <div className="signup-form">
-            <div className="top">
-                <img src={user} />
-                <h2>KNY MONCADA</h2>
-                <h3>Become a Member</h3>
+          <div className="top">
+            <img src={user} alt="User" style={{ width: '15%', height: '75%' }}/>
+            <div style={{ display: 'flex', flexDirection: 'column', textAlign: 'start'}}>
+              <h2>KNY MONCADA</h2>
+              <h3>Become a Member</h3>
             </div>
-            <div className="bottom">
-                <h1>Informed Consent</h1>
-                <p>I hereby authorize Kaya Natin! Youth- Moncada to collect and process all the data indicated. I understand that all my personal information is protected by RA 10173, Data Privacy Act of 2012, to provide truthful information.</p>
-                <RadioGroup defaultValue="1">
-                    <HStack gap="6">
-                        <Radio value="Yes">Yes</Radio>
-                        <Radio value="No">No</Radio>
-                    </HStack>
-                </RadioGroup>
-                <Field label="Email">
-                    <Input name="email" className="input"/>
-                </Field>
-            </div>
-            <Button>Next</Button>
+          </div>
+          <div className="bottom">
+            <h1>Informed Consent</h1>
+            <p>
+              I hereby authorize Kaya Natin! Youth- Moncada to collect and process all the data indicated.
+              I understand that all my personal information is protected by RA 10173, Data Privacy Act of 2012,
+              to provide truthful information.
+            </p>
+            <Field label="Email">
+              <Input name="email" className="input" value={email} onChange={(e) => setEmail(e.target.value)} required />
+            </Field>
+          </div>
+          <Button onClick={handleNext} type="submit" style={{ margin: '10px', width: '70%' }} className="button"> Next </Button>
         </div>
       </div>
     </div>
@@ -92,14 +105,15 @@ function SignUp() {
 }
 
 function Auth() {
-  const [isLogin, setIsLogin] = useState(true); // State to toggle between Login and SignUp
+   const [isLogin, setIsLogin] = useState(true); // State to toggle between Login and SignUp
 
   return (
     <div>
-      {isLogin ? <Login /> : <SignUp />}
+       {isLogin ? <Login /> : <SignUp />}
       <button onClick={() => setIsLogin(!isLogin)}>
         {isLogin ? 'Go to Sign Up' : 'Go to Login'}
       </button>
+      {/* <SignUp /> */}
     </div>
   );
 }

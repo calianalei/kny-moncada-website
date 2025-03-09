@@ -1,3 +1,43 @@
+.input {
+    background: #88bd8d;
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.input:hover {
+    background-color: #74a679;
+}
+
+.button {
+    background: #9985be;
+    color: white;
+}
+
+.button:hover {
+    background-color: #6955a4;
+    color: ;
+}
+
+h1 {
+    font-size: xx-large;
+    font-weight: bolder;
+    margin: 5%;
+}
+
+h2 {
+    font-size: larger;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: medium;
+    font-weight: 500;
+}
+
+
+
+
 .login-container, .signup-container {
     display: flex;
     flex-direction: column;
@@ -31,32 +71,6 @@
     align-items: center;
 }
 
-.login-container .inside-container .login-form .input-form .input {
-    background: #88bd8d;
-    color: white;
-    border: none;
-    transition: background-color 0.3s ease;
-}
-
-.login-container .inside-container .login-form .input-form .input:hover {
-    background-color: #74a679;
-}
-
-.login-container .inside-container .login-form .input-form .button {
-    background: #9985be;
-    color: white;
-}
-
-.login-container .inside-container .login-form .input-form .button:hover {
-    background-color: #6955a4;
-    color: ;
-}
-
-h1 {
-    font-size: xx-large;
-    font-weight: bolder;
-    margin: 5%;
-}
 
 @media (max-width: 768px) {
     .login-container, .signup-container {
@@ -77,4 +91,23 @@ h1 {
         width: 90%; /* Ensure the form takes up most of the width on small screens */
         padding: 10px;
     }
+}
+.signup-container .inside-container .signup-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+
+.login-container .inside-container .login-form .top, .bottom {
+    width: 70%;
+    justify-content: center;
+    align-items: center;
+}
+.signup-container .inside-container .signup-form .top {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
 }
